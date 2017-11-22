@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.kbiying.farmersmarket.proto";
+option java_outer_classname = "FarmersMarketProto";
+
+import "google/protobuf/wrappers.proto";
+
+package kbiying.farmersmarket;
+
+message FarmersMarket {
+  int64 id = 1;
+  string name = 2;
+  google.protobuf.StringValue address = 3;
+  google.protobuf.StringValue city = 4;
+  google.protobuf.StringValue county = 5;
+  google.protobuf.StringValue state = 6;
+  google.protobuf.StringValue zip = 7;
+  google.protobuf.DoubleValue lat = 8;
+  google.protobuf.DoubleValue long = 9;
+}
+
+message FarmersMarketTemplate {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.StringValue address = 3;
+  google.protobuf.StringValue city = 4;
+  google.protobuf.StringValue county = 5;
+  google.protobuf.StringValue state = 6;
+  google.protobuf.StringValue zip = 7;
+  google.protobuf.DoubleValue lat = 8;
+  google.protobuf.DoubleValue long = 9;
+}
+
+message EchoFarmersMarketRequest {
+  FarmersMarket farmers_market = 1;
+}
+
+message EchoFarmersMarketResponse {
+  FarmersMarket farmers_market = 1;
+}
+
+message CreateFarmersMarketRequest {
+  FarmersMarketTemplate farmers_market = 1;
+}
+
+message CreateFarmersMarketResponse {
+  FarmersMarket farmers_market = 1;
+}
+
+message DeleteFarmersMarketRequest {
+  FarmersMarketTemplate farmers_market = 1;
+}
+
+message DeleteFarmersMarketResponse {
+  repeated FarmersMarket farmers_market = 1;
+}
+
+message ReadFarmersMarketRequest {
+  FarmersMarketTemplate farmers_market = 1;
+}
+
+message ReadFarmersMarketResponse {
+  repeated FarmersMarket farmers_market = 1;
+}
+
+message UpdateFarmersMarketRequest {
+  FarmersMarketTemplate farmers_market = 1;
+  FarmersMarketTemplate conditions = 2;
+}
+
+message UpdateFarmersMarketResponse {
+  repeated FarmersMarket farmers_market = 1;
+}
+
+service FarmersMarketService {
+  rpc EchoFarmersMarket (EchoFarmersMarketRequest) returns (EchoFarmersMarketResponse) {
+  }
+
+  rpc CreateFarmersMarket (CreateFarmersMarketRequest) returns (CreateFarmersMarketResponse) {
+  }
+
+  rpc DeleteFarmersMarket (DeleteFarmersMarketRequest) returns (DeleteFarmersMarketResponse) {
+  }
+
+  rpc ReadFarmersMarket (ReadFarmersMarketRequest) returns (ReadFarmersMarketResponse) {
+  }
+
+  rpc UpdateFarmersMarket (UpdateFarmersMarketRequest) returns (UpdateFarmersMarketResponse) {
+  }
+}
